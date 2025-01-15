@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import variables from '../../styles/variables'
 
-import * as enums from '../../utils/enums/Task'
+import * as enums from '../../utils/enums/Contact'
 import { Button } from '../../styles'
 
 type TagProps = {
@@ -12,8 +12,8 @@ type TagProps = {
 
 function returnBackgroundColor(props: TagProps): string {
   if (props.$parameter === 'priority') {
-    if (props.$priority === enums.Priority.URGENT) return variables.red
-    if (props.$priority === enums.Priority.IMPORTANT) return variables.yellow2
+    if (props.$priority === enums.Priority.FAMILY) return variables.red
+    if (props.$priority === enums.Priority.WORK) return variables.yellow2
   } else {
     if (props.$status === enums.Status.TO_DO) return variables.yellow
     if (props.$status === enums.Status.DONE) return variables.green

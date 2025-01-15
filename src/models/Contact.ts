@@ -1,6 +1,6 @@
-import * as enums from '../utils/enums/Task'
+import * as enums from '../utils/enums/Contact'
 
-class Task {
+class Contact {
   title: string
   priority: enums.Priority
   status: enums.Status
@@ -22,4 +22,4 @@ class Task {
   }
 }
 
-export default Task
+export default Contact

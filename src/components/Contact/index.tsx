@@ -3,15 +3,15 @@ import { useDispatch } from 'react-redux'
 
 import * as S from './styles'
 
-import { remover, edit, changeStatus } from '../../store/reducers/tasks'
-import TaskClass from '../../models/Task'
+import { remover, edit, changeStatus } from '../../store/reducers/contacts'
+import ContactClass from '../../models/Contact'
 import { Button, SaveButton } from '../../styles'
 
-import * as enums from '../../utils/enums/Task'
+import * as enums from '../../utils/enums/Contact'
 
-type Props = TaskClass
+type Props = ContactClass
 
-const Task = ({
+const Contact = ({
   description: originalDescription,
   priority,
   status,
@@ -33,7 +33,7 @@ const Task = ({
     setDescription(originalDescription)
   }
 
-  function changeStatusTask(event: ChangeEvent<HTMLInputElement>) {
+  function changeStatusContact(event: ChangeEvent<HTMLInputElement>) {
     dispatch(
       changeStatus({
         id,
@@ -49,7 +49,7 @@ const Task = ({
           type="checkbox"
           id={title}
           checked={status === enums.Status.DONE}
-          onChange={changeStatusTask}
+          onChange={changeStatusContact}
         />
         <S.Title>
           {isEditing && <em>Editing: </em>}
@@ -102,4 +102,4 @@ const Task = ({
   )
 }
 
-export default Task
+export default Contact

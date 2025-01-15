@@ -6,17 +6,17 @@ import { MainContainer, SaveButton, Title } from '../../styles'
 import { Field } from '../../styles'
 import { Form, Options, Option } from './styles'
 
-import * as enums from '../../utils/enums/Task'
-import { insert } from '../../store/reducers/tasks'
+import * as enums from '../../utils/enums/Contact'
+import { insert } from '../../store/reducers/contacts'
 
 const Formulary = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [priority, setPriority] = useState(enums.Priority.NORMAL)
+  const [priority, setPriority] = useState(enums.Priority.OTHERS)
 
-  const taskRegister = (event: FormEvent) => {
+  const contactRegister = (event: FormEvent) => {
     event.preventDefault()
 
     dispatch(
@@ -32,8 +32,8 @@ const Formulary = () => {
 
   return (
     <MainContainer>
-      <Title>New Task</Title>
-      <Form onSubmit={taskRegister}>
+      <Title>New Contact</Title>
+      <Form onSubmit={contactRegister}>
         <Field
           value={title}
           onChange={(event) => setTitle(event.target.value)}
@@ -44,7 +44,7 @@ const Formulary = () => {
           value={description}
           onChange={({ target }) => setDescription(target.value)}
           as="textarea"
-          placeholder="Task Description"
+          placeholder="Contact Description"
         />
         <Options>
           <p>Priority</p>
@@ -58,13 +58,13 @@ const Formulary = () => {
                   setPriority(event.target.value as enums.Priority)
                 }
                 id={priority}
-                defaultChecked={priority === enums.Priority.NORMAL}
+                defaultChecked={priority === enums.Priority.OTHERS}
               />{' '}
               <label htmlFor={priority}>{priority}</label>
             </Option>
           ))}
         </Options>
-        <SaveButton type="submit">Add Task</SaveButton>
+        <SaveButton type="submit">Add Contact</SaveButton>
       </Form>
     </MainContainer>
   )

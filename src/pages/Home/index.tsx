@@ -1,11 +1,11 @@
 import AddButton from '../../components/AddButton'
 import SideBar from '../../containers/SideBar'
-import TasksList from '../../containers/TasksList'
+import ContactsList from '../../containers/ContactsList'
 
 const Home = () => (
   <>
     <SideBar showFilteredResults />
-    <TasksList />
+    <ContactsList />
     <AddButton />
   </>
 )

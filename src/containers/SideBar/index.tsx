@@ -6,7 +6,7 @@ import { RootReducer } from '../../store'
 import { changeTerm } from '../../store/reducers/filter'
 
 import * as S from './styles'
-import * as enums from '../../utils/enums/Task'
+import * as enums from '../../utils/enums/Contact'
 import { Button, Field } from '../../styles'
 
 type Props = {
@@ -41,25 +41,27 @@ const SideBar = ({ showFilteredResults }: Props) => {
                 label="done"
               />
               <CardFilter
-                value={enums.Priority.URGENT}
+                value={enums.Priority.FAMILY}
                 criteria="priority"
-                label="urgent"
+                label="family"
               />
               <CardFilter
-                value={enums.Priority.IMPORTANT}
+                value={enums.Priority.WORK}
                 criteria="priority"
-                label="important"
+                label="work"
               />
               <CardFilter
-                value={enums.Priority.NORMAL}
+                value={enums.Priority.OTHERS}
                 criteria="priority"
-                label="regular"
+                label="others"
               />
-              <CardFilter criteria="all" label="all tasks" />
+              <CardFilter criteria="all" label="all contacts" />
             </S.Filters>
           </>
         ) : (
-          <Button onClick={() => navigate('/')}>Back to the tasks list</Button>
+          <Button onClick={() => navigate('/')}>
+            Back to the contacts list
+          </Button>
         )}
       </div>
     </S.Aside>
