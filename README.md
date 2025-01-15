@@ -1,4 +1,4 @@
-# My Tasks
+# Contacts List
 
 The purpose of this project is to learn and implement:
 
@@ -6,18 +6,18 @@ The purpose of this project is to learn and implement:
 - React Router for navigation
 - `useSelector` for accessing the Redux state
 - `useDispatch` for dispatching actions
-- Slices for managing the tasks and filter state
+- Slices for managing the contacts state
 - Props for component communication
 
 ## Demo
 
-![Demo GIF](https://github.com/maxh33/my-tasks/blob/main/public/demo.gif)
+![Demo GIF](https://github.com/maxh33/contacts-list/blob/main/public/demo.gif)
 
 ## Deployment
 
 This project is deployed on Vercel. Please note that the deployed version does not store data persistently. Any tasks you add will not be saved permanently.
 
-You can view it here: [My Tasks](https://my-tasks-delta-ochre.vercel.app/).
+You can view it here: [Contacts List](https://contacts-list.vercel.app/).
 
 ## Technologies Used
 
@@ -29,9 +29,8 @@ You can view it here: [My Tasks](https://my-tasks-delta-ochre.vercel.app/).
 
 ## Features
 
-- Add, edit, and remove tasks
-- Filter tasks by priority and status
-- Display total tasks and filtered tasks count
+- Add, edit, and remove contacts
+- Display contact details (full name, email, phone number)
 - Responsive design
 
 # Getting Started with Create React App
