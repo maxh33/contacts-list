@@ -5,7 +5,7 @@ import * as S from './styles'
 
 import { remover, edit, changeStatus } from '../../store/reducers/contacts'
 import ContactClass from '../../models/Contact'
-import { Button, SaveButton } from '../../styles'
+import { Button, Field, SaveButton } from '../../styles'
 
 import * as enums from '../../utils/enums/Contact'
 
@@ -16,21 +16,33 @@ const Contact = ({
   priority,
   status,
   title,
-  id
+  id,
+  email: originalEmail,
+  phone: originalPhone
 }: Props) => {
   const dispatch = useDispatch()
   const [isEditing, setIsEditing] = useState(false)
   const [description, setDescription] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
 
   useEffect(() => {
     if (originalDescription.length > 0) {
       setDescription(originalDescription)
     }
-  }, [originalDescription])
+    if (originalEmail.length > 0) {
+      setEmail(originalEmail)
+    }
+    if (originalPhone.length > 0) {
+      setPhone(originalPhone)
+    }
+  }, [originalDescription, originalEmail, originalPhone])
 
   function cancelEdit() {
     setIsEditing(false)
     setDescription(originalDescription)
+    setEmail(originalEmail)
+    setPhone(originalPhone)
   }
 
   function changeStatusContact(event: ChangeEvent<HTMLInputElement>) {
@@ -62,13 +74,26 @@ const Contact = ({
       <S.Tag $parameter="status" $status={status}>
         {status}
       </S.Tag>
+      <Field
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+        type="email"
+        placeholder="Email"
+        disabled={!isEditing}
+      />
+      <Field
+        value={phone}
+        onChange={(event) => setPhone(event.target.value)}
+        type="tel"
+        placeholder="Phone Number"
+        disabled={!isEditing}
+      />
       <S.Description
         disabled={!isEditing}
         value={description}
         onChange={(event) => setDescription(event.target.value)}
       />
       <S.ActionBar>
-        {/* Ternary operator render buttons based on isEditing state */}
         {isEditing ? (
           <>
             <SaveButton
@@ -79,7 +104,9 @@ const Contact = ({
                     priority,
                     status,
                     title,
-                    id
+                    id,
+                    email,
+                    phone
                   })
                 )
                 setIsEditing(false)

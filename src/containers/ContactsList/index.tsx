@@ -60,6 +60,8 @@ const ContactsList = () => {
               title={t.title}
               status={t.status}
               priority={t.priority}
+              email={t.email}
+              phone={t.phone}
             />
           </li>
         ))}

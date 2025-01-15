@@ -13,6 +13,8 @@ const Formulary = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [title, setTitle] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [description, setDescription] = useState('')
   const [priority, setPriority] = useState(enums.Priority.OTHERS)
 
@@ -24,6 +26,8 @@ const Formulary = () => {
         title,
         priority,
         description,
+        email,
+        phone,
         status: enums.Status.TO_DO
       })
     )
@@ -38,7 +42,19 @@ const Formulary = () => {
           value={title}
           onChange={(event) => setTitle(event.target.value)}
           type="text"
-          placeholder="Title"
+          placeholder="Full Name"
+        />
+        <Field
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          type="email"
+          placeholder="Email"
+        />
+        <Field
+          value={phone}
+          onChange={(event) => setPhone(event.target.value)}
+          type="tel"
+          placeholder="Phone"
         />
         <Field
           value={description}

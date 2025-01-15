@@ -10,24 +10,30 @@ const initialState: ContactsState = {
   items: [
     {
       id: 1,
-      description: '+55 43 99999-9999',
+      description: 'New Manager',
       priority: enums.Priority.WORK,
       status: enums.Status.DONE,
-      title: 'Maria Carla'
+      title: 'Maria Carla',
+      email: 'maria.carla@example.com',
+      phone: '+55 43 99999-9999'
     },
     {
       id: 2,
-      description: '+55 13 99999-9999',
+      description: 'Store Client',
       priority: enums.Priority.OTHERS,
       status: enums.Status.TO_DO,
-      title: 'Pedro Paulo'
+      title: 'Pedro Paulo',
+      email: 'pedro.paulo@example.com',
+      phone: '+55 13 99999-9999'
     },
     {
       id: 3,
-      description: '+55 11 99999-9999',
+      description: 'Capital Cousin',
       priority: enums.Priority.FAMILY,
       status: enums.Status.TO_DO,
-      title: 'Rafael Silva'
+      title: 'Rafael Silva',
+      email: 'rafa.silva@example.com',
+      phone: '+55 11 99999-9999'
     }
   ]
 }
