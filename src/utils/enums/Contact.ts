@@ -5,6 +5,6 @@ export enum Priority {
 }
 
 export enum Status {
-  TO_DO = 'To Do',
-  DONE = 'Done'
+  NON_WHATSAPP = 'Non WhatsApp Contact',
+  WHATSAPP_CONTACT = 'WhatsApp Contact'
 }

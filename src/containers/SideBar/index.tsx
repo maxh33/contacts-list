@@ -31,14 +31,14 @@ const SideBar = ({ showFilteredResults }: Props) => {
             />
             <S.Filters>
               <CardFilter
-                value={enums.Status.TO_DO}
+                value={enums.Status.NON_WHATSAPP}
                 criteria="status"
-                label="pendent"
+                label="Don't have WhatsApp"
               />
               <CardFilter
-                value={enums.Status.DONE}
+                value={enums.Status.WHATSAPP_CONTACT}
                 criteria="status"
-                label="done"
+                label="Have WhatsApp"
               />
               <CardFilter
                 value={enums.Priority.FAMILY}

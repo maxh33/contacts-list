@@ -10,29 +10,29 @@ const initialState: ContactsState = {
   items: [
     {
       id: 1,
-      description: 'New Manager',
+      description: 'The Boss',
       priority: enums.Priority.WORK,
-      status: enums.Status.DONE,
-      title: 'Maria Carla',
-      email: 'maria.carla@example.com',
+      status: enums.Status.WHATSAPP_CONTACT,
+      title: 'Satoshi Nakamoto',
+      email: 'btc.rules@example.com',
       phone: '+55 43 99999-9999'
     },
     {
       id: 2,
       description: 'Store Client',
       priority: enums.Priority.OTHERS,
-      status: enums.Status.TO_DO,
-      title: 'Pedro Paulo',
-      email: 'pedro.paulo@example.com',
+      status: enums.Status.NON_WHATSAPP,
+      title: 'Skyler White',
+      email: 'skyler.w@example.com',
       phone: '+55 13 99999-9999'
     },
     {
       id: 3,
       description: 'Capital Cousin',
       priority: enums.Priority.FAMILY,
-      status: enums.Status.TO_DO,
-      title: 'Rafael Silva',
-      email: 'rafa.silva@example.com',
+      status: enums.Status.WHATSAPP_CONTACT,
+      title: 'Max Haider',
+      email: 'max@h.dev',
       phone: '+55 11 99999-9999'
     }
   ]
@@ -81,8 +81,8 @@ const contactsSlice = createSlice({
       )
       if (indexContact >= 0) {
         state.items[indexContact].status = action.payload.done
-          ? enums.Status.DONE
-          : enums.Status.TO_DO
+          ? enums.Status.WHATSAPP_CONTACT
+          : enums.Status.NON_WHATSAPP
       }
     }
   }

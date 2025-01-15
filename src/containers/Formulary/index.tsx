@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { MainContainer, SaveButton, Title } from '../../styles'
 import { Field } from '../../styles'
-import { Form, Options, Option } from './styles'
+import { Form, Label, Options, Option } from './styles'
 
 import * as enums from '../../utils/enums/Contact'
 import { insert } from '../../store/reducers/contacts'
@@ -17,6 +17,7 @@ const Formulary = () => {
   const [phone, setPhone] = useState('')
   const [description, setDescription] = useState('')
   const [priority, setPriority] = useState(enums.Priority.OTHERS)
+  const [hasWhatsApp, setHasWhatsApp] = useState(true)
 
   const contactRegister = (event: FormEvent) => {
     event.preventDefault()
@@ -28,7 +29,9 @@ const Formulary = () => {
         description,
         email,
         phone,
-        status: enums.Status.TO_DO
+        status: hasWhatsApp
+          ? enums.Status.WHATSAPP_CONTACT
+          : enums.Status.NON_WHATSAPP
       })
     )
     navigate('/')
@@ -62,13 +65,21 @@ const Formulary = () => {
           as="textarea"
           placeholder="Contact Description"
         />
+        <Label>
+          <input
+            type="checkbox"
+            checked={hasWhatsApp}
+            onChange={(event) => setHasWhatsApp(event.target.checked)}
+          />
+          Has Whats App
+        </Label>
         <Options>
-          <p>Priority</p>
+          <Label>Category</Label>
           {Object.values(enums.Priority).map((priority) => (
             <Option key={priority}>
               <input
                 value={priority}
-                name="priority"
+                name="Category"
                 type="radio"
                 onChange={(event) =>
                   setPriority(event.target.value as enums.Priority)

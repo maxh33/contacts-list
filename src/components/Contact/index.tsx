@@ -5,7 +5,7 @@ import * as S from './styles'
 
 import { remover, edit, changeStatus } from '../../store/reducers/contacts'
 import ContactClass from '../../models/Contact'
-import { Button, Field, SaveButton } from '../../styles'
+import { Button, Field, SaveButton, TextArea } from '../../styles'
 
 import * as enums from '../../utils/enums/Contact'
 
@@ -60,7 +60,7 @@ const Contact = ({
         <input
           type="checkbox"
           id={title}
-          checked={status === enums.Status.DONE}
+          checked={status === enums.Status.WHATSAPP_CONTACT}
           onChange={changeStatusContact}
         />
         <S.Title>
@@ -77,6 +77,7 @@ const Contact = ({
       <Field
         value={email}
         onChange={(event) => setEmail(event.target.value)}
+        as="input"
         type="email"
         placeholder="Email"
         disabled={!isEditing}
@@ -84,11 +85,12 @@ const Contact = ({
       <Field
         value={phone}
         onChange={(event) => setPhone(event.target.value)}
+        as="input"
         type="tel"
         placeholder="Phone Number"
         disabled={!isEditing}
       />
-      <S.Description
+      <TextArea
         disabled={!isEditing}
         value={description}
         onChange={(event) => setDescription(event.target.value)}
