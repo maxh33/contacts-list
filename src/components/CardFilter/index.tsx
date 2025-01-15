@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { changeFilter } from '../../store/reducers/filter'
 import * as S from './styles'
-import * as enums from '../../utils/enums/Task'
+import * as enums from '../../utils/enums/Contact'
 import { RootReducer } from '../../store'
 
 export type Props = {
@@ -12,7 +12,7 @@ export type Props = {
 
 const CardFilter = ({ label, criteria, value }: Props) => {
   const dispatch = useDispatch()
-  const { filter, tasks } = useSelector((state: RootReducer) => state)
+  const { filter, contacts } = useSelector((state: RootReducer) => state)
 
   const checkIfActive = () => {
     const sameCriteria = filter.criteria === criteria
@@ -21,13 +21,13 @@ const CardFilter = ({ label, criteria, value }: Props) => {
     return sameCriteria && sameValue
   }
 
-  const taskCounter = () => {
-    if (criteria === 'all') return tasks.items.length
+  const contactCounter = () => {
+    if (criteria === 'all') return contacts.items.length
     if (criteria === 'priority') {
-      return tasks.items.filter((item) => item.priority === value).length
+      return contacts.items.filter((item) => item.priority === value).length
     }
     if (criteria === 'status') {
-      return tasks.items.filter((item) => item.status === value).length
+      return contacts.items.filter((item) => item.status === value).length
     }
     return 0
   }
@@ -40,7 +40,7 @@ const CardFilter = ({ label, criteria, value }: Props) => {
       })
     )
   }
-  const counter = taskCounter()
+  const counter = contactCounter()
   const active = checkIfActive()
 
   return (

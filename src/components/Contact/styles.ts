@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import variables from '../../styles/variables'
 
-import * as enums from '../../utils/enums/Task'
+import * as enums from '../../utils/enums/Contact'
 import { Button } from '../../styles'
 
 type TagProps = {
@@ -12,11 +12,11 @@ type TagProps = {
 
 function returnBackgroundColor(props: TagProps): string {
   if (props.$parameter === 'priority') {
-    if (props.$priority === enums.Priority.URGENT) return variables.red
-    if (props.$priority === enums.Priority.IMPORTANT) return variables.yellow2
+    if (props.$priority === enums.Priority.FAMILY) return variables.red
+    if (props.$priority === enums.Priority.WORK) return variables.yellow2
   } else {
-    if (props.$status === enums.Status.TO_DO) return variables.yellow
-    if (props.$status === enums.Status.DONE) return variables.green
+    if (props.$status === enums.Status.NON_WHATSAPP) return variables.yellow
+    if (props.$status === enums.Status.WHATSAPP_CONTACT) return variables.green
   }
 
   return variables.regular
@@ -26,13 +26,13 @@ export const Card = styled.div`
   background-color: #fcfcfc;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   border-radius: 16px;
 
   label {
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 6px;
   }
 `
 export const Title = styled.h3`
@@ -48,22 +48,9 @@ export const Tag = styled.span<TagProps>`
   font-size: 10px;
   background-color: ${(props) => returnBackgroundColor(props)};
   border-radius: 8px;
-  margin-right: 16px;
+  margin-right: 6px;
+  margin-bottom: 6px;
   display: inline-block;
-`
-
-export const Description = styled.textarea`
-  color: #8b8b8b;
-  font-size: 14px;
-  line-height: 24px;
-  font-family: 'Roboto Mono', monospace;
-  display: block;
-  width: 100%;
-  margin-bottom: 16px;
-  margin-top: 16px;
-  resize: none;
-  border: none;
-  background-color: transparent;
 `
 
 export const ActionBar = styled.div`

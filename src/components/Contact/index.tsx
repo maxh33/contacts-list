@@ -3,37 +3,49 @@ import { useDispatch } from 'react-redux'
 
 import * as S from './styles'
 
-import { remover, edit, changeStatus } from '../../store/reducers/tasks'
-import TaskClass from '../../models/Task'
-import { Button, SaveButton } from '../../styles'
+import { remover, edit, changeStatus } from '../../store/reducers/contacts'
+import ContactClass from '../../models/Contact'
+import { Button, Field, SaveButton, TextArea } from '../../styles'
 
-import * as enums from '../../utils/enums/Task'
+import * as enums from '../../utils/enums/Contact'
 
-type Props = TaskClass
+type Props = ContactClass
 
-const Task = ({
+const Contact = ({
   description: originalDescription,
   priority,
   status,
   title,
-  id
+  id,
+  email: originalEmail,
+  phone: originalPhone
 }: Props) => {
   const dispatch = useDispatch()
   const [isEditing, setIsEditing] = useState(false)
   const [description, setDescription] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
 
   useEffect(() => {
     if (originalDescription.length > 0) {
       setDescription(originalDescription)
     }
-  }, [originalDescription])
+    if (originalEmail.length > 0) {
+      setEmail(originalEmail)
+    }
+    if (originalPhone.length > 0) {
+      setPhone(originalPhone)
+    }
+  }, [originalDescription, originalEmail, originalPhone])
 
   function cancelEdit() {
     setIsEditing(false)
     setDescription(originalDescription)
+    setEmail(originalEmail)
+    setPhone(originalPhone)
   }
 
-  function changeStatusTask(event: ChangeEvent<HTMLInputElement>) {
+  function changeStatusContact(event: ChangeEvent<HTMLInputElement>) {
     dispatch(
       changeStatus({
         id,
@@ -48,8 +60,8 @@ const Task = ({
         <input
           type="checkbox"
           id={title}
-          checked={status === enums.Status.DONE}
-          onChange={changeStatusTask}
+          checked={status === enums.Status.WHATSAPP_CONTACT}
+          onChange={changeStatusContact}
         />
         <S.Title>
           {isEditing && <em>Editing: </em>}
@@ -62,13 +74,28 @@ const Task = ({
       <S.Tag $parameter="status" $status={status}>
         {status}
       </S.Tag>
-      <S.Description
+      <Field
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+        as="input"
+        type="email"
+        placeholder="Email"
+        disabled={!isEditing}
+      />
+      <Field
+        value={phone}
+        onChange={(event) => setPhone(event.target.value)}
+        as="input"
+        type="tel"
+        placeholder="Phone Number"
+        disabled={!isEditing}
+      />
+      <TextArea
         disabled={!isEditing}
         value={description}
         onChange={(event) => setDescription(event.target.value)}
       />
       <S.ActionBar>
-        {/* Ternary operator render buttons based on isEditing state */}
         {isEditing ? (
           <>
             <SaveButton
@@ -79,7 +106,9 @@ const Task = ({
                     priority,
                     status,
                     title,
-                    id
+                    id,
+                    email,
+                    phone
                   })
                 )
                 setIsEditing(false)
@@ -102,4 +131,4 @@ const Task = ({
   )
 }
 
-export default Task
+export default Contact

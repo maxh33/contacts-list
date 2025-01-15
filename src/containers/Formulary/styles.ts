@@ -10,15 +10,16 @@ export const Form = styled.form`
   textarea {
     resize: none;
     margin: 16px 0;
-    height: 200px;
+    height: 80px;
   }
 `
+export const Label = styled.label`
+  display: block;
+  padding: 8px 0;
+`
+
 export const Options = styled.div`
   margin-bottom: 16px;
-
-  p {
-    margin-bottom: 6px;
-  }
 
   label {
     margin-right: 6px;

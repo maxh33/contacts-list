@@ -1,27 +1,31 @@
 import { useSelector } from 'react-redux'
 
-import Task from '../../components/Task'
+import Contact from '../../components/Contact'
 import { MainContainer, Title } from '../../styles'
 import { RootReducer } from '../../store'
 
-const TasksList = () => {
-  const { items } = useSelector((state: RootReducer) => state.tasks)
+const ContactsList = () => {
+  const { items } = useSelector((state: RootReducer) => state.contacts)
   const { term, criteria, value } = useSelector(
     (state: RootReducer) => state.filter
   )
 
-  const tasksFilter = () => {
-    let filteredTasks = items
+  const contactsFilter = () => {
+    let filteredContacts = items
     if (term !== undefined) {
-      filteredTasks = filteredTasks.filter(
+      filteredContacts = filteredContacts.filter(
         (item) => item.title.toLowerCase().search(term.toLowerCase()) >= 0
       )
       if (criteria === 'priority') {
-        filteredTasks = filteredTasks.filter((item) => item.priority === value)
+        filteredContacts = filteredContacts.filter(
+          (item) => item.priority === value
+        )
       } else if (criteria === 'status') {
-        filteredTasks = filteredTasks.filter((item) => item.status === value)
+        filteredContacts = filteredContacts.filter(
+          (item) => item.status === value
+        )
       }
-      return filteredTasks
+      return filteredContacts
     } else {
       return items
     }
@@ -33,29 +37,31 @@ const TasksList = () => {
       term !== undefined && term.length > 0 ? `e "${term}"` : ''
 
     if (criteria === 'all') {
-      message = `${quantity} task(s) found(s) as: all ${complement}`
+      message = `${quantity} contact(s) found(s) as: all ${complement}`
     } else {
-      message = `${quantity} task(s) found(s) as: "${`${criteria}=${value}`}" ${complement}`
+      message = `${quantity} contact(s) found(s) as: "${`${criteria}=${value}`}" ${complement}`
     }
 
     return message
   }
 
-  const tasks = tasksFilter()
-  const message = showFilteredResults(tasks.length)
+  const contacts = contactsFilter()
+  const message = showFilteredResults(contacts.length)
 
   return (
     <MainContainer>
       <Title as="p">{message}</Title>
       <ul>
-        {tasks.map((t) => (
+        {contacts.map((t) => (
           <li key={t.title}>
-            <Task
+            <Contact
               id={t.id}
               description={t.description}
               title={t.title}
               status={t.status}
               priority={t.priority}
+              email={t.email}
+              phone={t.phone}
             />
           </li>
         ))}
@@ -64,4 +70,4 @@ const TasksList = () => {
   )
 }
 
-export default TasksList
+export default ContactsList

@@ -1,5 +1,5 @@
 import { Circle } from './styles'
 
-const AddButton = () => <Circle to="/new-task">+</Circle>
+const AddButton = () => <Circle to="/new-contact">+</Circle>
 
 export default AddButton

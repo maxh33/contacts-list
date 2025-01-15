@@ -1,10 +1,12 @@
-import * as enums from '../utils/enums/Task'
+import * as enums from '../utils/enums/Contact'
 
-class Task {
+class Contact {
   title: string
   priority: enums.Priority
   status: enums.Status
   description: string
+  email: string
+  phone: string
   id: number
 
   constructor(
@@ -12,14 +14,18 @@ class Task {
     priority: enums.Priority,
     status: enums.Status,
     description: string,
+    email: string,
+    phone: string,
     id: number
   ) {
     this.title = title
     this.priority = priority
     this.status = status
+    this.email = email
+    this.phone = phone
     this.id = id
     this.description = description
   }
 }
 
-export default Task
+export default Contact
