@@ -71,12 +71,13 @@ export const Button = styled.button`
   font-weight: bold;
   font-size: 12px;
   color: #fff;
-  padding: 8px 12px;
+  padding: 8px 16px;
   border: none;
   cursor: pointer;
-  background-color: #${variables.darkBlue};
+  background-color: ${variables.darkBlue};
   border-radius: 8px;
   margin-right: 8px;
+  margin-bottom: 8px;
 `
 
 export const SaveButton = styled(Button)`

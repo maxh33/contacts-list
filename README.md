@@ -17,7 +17,7 @@ The purpose of this project is to learn and implement:
 
 This project is deployed on Vercel. Please note that the deployed version does not store data persistently. Any tasks you add will not be saved permanently.
 
-You can view it here: [Contacts List](https://contacts-list.vercel.app/).
+You can view it here: [Contacts List](https://contacts-list-tawny.vercel.app/).
 
 ## Technologies Used
 
